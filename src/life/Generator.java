@@ -12,6 +12,8 @@ public class Generator {
 
     public static void nextState(char[][] a, int n) {
         int neighbours = 0;
+
+        //Makes the border
         for (int i = 1; i < n - 1; i++) {
             a[i][n - 1] = a[i][1]; //Right
             a[i][0] = a[i][n - 2]; //Left
@@ -27,31 +29,15 @@ public class Generator {
 
         for (int i = 1; i < n - 1; i++) {
             for (int j = 1; j < n - 1; j++) {
-
-                if (a[i - 1][j - 1] == 'O') {
-                    neighbours++;
-                }
-                if (a[i - 1][j] == 'O') {
-                    neighbours++;
-                }
-                if (a[i - 1][j + 1] == 'O') {
-                    neighbours++;
-                }
-                if (a[i][j - 1] == 'O') {
-                    neighbours++;
-                }
-                if (a[i][j + 1] == 'O') {
-                    neighbours++;
-                }
-                if (a[i + 1][j - 1] == 'O') {
-                    neighbours++;
-                }
-                if (a[i + 1][j] == 'O') {
-                    neighbours++;
-                }
-                if (a[i + 1][j + 1] == 'O') {
-                    neighbours++;
-                }
+                //Check how many neighbours char[i][j] has
+                neighbours = (a[i - 1][j - 1] == 'O' ? 1 : 0)
+                           + (a[i - 1][j]     == 'O' ? 1 : 0)
+                           + (a[i - 1][j + 1] == 'O' ? 1 : 0)
+                           + (a[i][j - 1]     == 'O' ? 1 : 0)
+                           + (a[i][j + 1]     == 'O' ? 1 : 0)
+                           + (a[i + 1][j - 1] == 'O' ? 1 : 0)
+                           + (a[i + 1][j]     == 'O' ? 1 : 0)
+                           + (a[i + 1][j + 1] == 'O' ? 1 : 0);
 
                 //I put the life status changes that need to be done in a HashMap<Position, 'O' or ' '>
                 if (a[i][j] == 'O') {
