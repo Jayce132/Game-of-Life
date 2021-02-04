@@ -7,4 +7,9 @@ public class Counter {
     private Counter() {
 
     }
+
+    public static void resetCounter() {
+        alive = 0;
+        generation = 1;
+    }
 }
